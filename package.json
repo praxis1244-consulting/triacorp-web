@@ -1,0 +1,57 @@
+{
+  "name": "triacorp",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently \"tsx watch server/index.ts\" \"vite\"",
+    "build": "vite build && esbuild server/index.ts --bundle --platform=node --outdir=dist/server --format=esm --packages=external",
+    "start": "node dist/server/index.js",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.1",
+    "@radix-ui/react-slot": "^1.1.1",
+    "@tanstack/react-query": "^5.62.8",
+    "@trpc/client": "^11.0.0-rc.682",
+    "@trpc/react-query": "^11.0.0-rc.682",
+    "@trpc/server": "^11.0.0-rc.682",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "concurrently": "^9.1.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.468.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hook-form": "^7.54.2",
+    "resend": "^6.9.3",
+    "tailwind-merge": "^2.6.0",
+    "three": "^0.183.2",
+    "wouter": "^3.5.0",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "@types/react": "^19.0.2",
+    "@types/react-dom": "^19.0.2",
+    "@types/three": "^0.183.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.24.2",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^4.0.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3",
+    "vite": "^6.0.7"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

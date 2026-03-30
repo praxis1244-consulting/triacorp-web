@@ -1,0 +1,207 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* TRIACORP brand palette — derived from logo teal/sage tones */
+  --color-brand: #2A6B65;
+  --color-brand-dark: #1E5650;
+  --color-brand-light: #4A8A84;
+  --color-sage: #7DA397;
+  --color-sage-light: #B5C5BA;
+  --color-charcoal: #1A1A1A;
+  --color-charcoal-light: #2D2D2D;
+  --color-warm-white: #F8F9F7;
+  --color-warm-gray: #EDF0EC;
+  --color-border: #CDD5CF;
+  --color-muted: #7A8580;
+
+  /* Dark palette */
+  --color-dark-bg: #101212;
+  --color-dark-surface: #181C1B;
+  --color-dark-border: #282E2C;
+  --color-dark-muted: #7A8580;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: clip;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-warm-white);
+  color: var(--color-charcoal);
+  overflow-x: clip;
+  transition:
+    background-color 300ms ease,
+    background-image 300ms ease,
+    color 300ms ease;
+}
+
+.dark body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-warm-white);
+}
+
+/* Editorial surface — subtle teal gradients */
+html[data-surface="editorial"] body {
+  background-image:
+    radial-gradient(circle at 12% 14%, rgba(42, 107, 101, 0.12), transparent 0 30%),
+    radial-gradient(circle at 88% 12%, rgba(125, 163, 151, 0.15), transparent 0 26%),
+    radial-gradient(circle at 50% 52%, rgba(255, 255, 255, 0.65), transparent 0 38%),
+    linear-gradient(130deg, rgba(255, 255, 255, 0.26) 0%, transparent 38%),
+    linear-gradient(180deg, #f9faf8 0%, #eef2ed 48%, #f4f7f3 100%);
+  background-attachment: fixed;
+}
+
+html.dark[data-surface="editorial"] body,
+.dark html[data-surface="editorial"] body {
+  background-image:
+    radial-gradient(circle at 14% 14%, rgba(42, 107, 101, 0.12), transparent 0 28%),
+    radial-gradient(circle at 82% 10%, rgba(248, 249, 247, 0.06), transparent 0 24%),
+    radial-gradient(circle at 46% 56%, rgba(255, 255, 255, 0.03), transparent 0 34%),
+    linear-gradient(130deg, rgba(255, 255, 255, 0.02) 0%, transparent 42%),
+    linear-gradient(180deg, #111313 0%, #161918 50%, #101212 100%);
+  background-attachment: fixed;
+}
+
+/* Material surface — architectural texture */
+html[data-surface="material"] body {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.22) 0%,
+      rgba(255, 255, 255, 0.08) 28%,
+      rgba(255, 255, 255, 0) 100%
+    ),
+    repeating-linear-gradient(
+      180deg,
+      rgba(125, 163, 151, 0.06) 0,
+      rgba(125, 163, 151, 0.06) 140px,
+      rgba(255, 255, 255, 0) 140px,
+      rgba(255, 255, 255, 0) 320px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(255, 255, 255, 0.12) 32%,
+      rgba(205, 213, 207, 0.18) 32%,
+      rgba(205, 213, 207, 0.18) 68%,
+      rgba(255, 255, 255, 0.16) 68%,
+      rgba(255, 255, 255, 0.16) 100%
+    ),
+    linear-gradient(160deg, #f6f8f5 0%, #eaefe8 36%, #f2f5f0 64%, #e5ece4 100%);
+  background-attachment: fixed;
+}
+
+html.dark[data-surface="material"] body,
+.dark html[data-surface="material"] body {
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)),
+    repeating-linear-gradient(
+      180deg,
+      rgba(248, 249, 247, 0.02) 0,
+      rgba(248, 249, 247, 0.02) 140px,
+      rgba(255, 255, 255, 0) 140px,
+      rgba(255, 255, 255, 0) 320px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.02) 0%,
+      rgba(255, 255, 255, 0.008) 34%,
+      rgba(255, 255, 255, 0.035) 34%,
+      rgba(255, 255, 255, 0.035) 66%,
+      rgba(255, 255, 255, 0.012) 66%,
+      rgba(255, 255, 255, 0.012) 100%
+    ),
+    linear-gradient(160deg, #111312 0%, #161917 34%, #131514 64%, #101211 100%);
+  background-attachment: fixed;
+}
+
+/* Minimal surface — clean, default */
+html[data-surface="minimal"] body {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.7), transparent 0 28%),
+    linear-gradient(180deg, #f9faf8 0%, #f0f3ee 52%, #f5f7f3 100%);
+  background-attachment: fixed;
+}
+
+html.dark[data-surface="minimal"] body,
+.dark html[data-surface="minimal"] body {
+  background-image:
+    radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.04), transparent 0 26%),
+    linear-gradient(180deg, #101212 0%, #141716 46%, #101212 100%);
+  background-attachment: fixed;
+}
+
+/* Marquee animation */
+@keyframes marquee-scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(var(--marquee-offset)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  [style*="marquee-scroll"] {
+    animation: none !important;
+    will-change: auto;
+  }
+}
+
+/* CTA button hover micro-interaction */
+.cta-button {
+  transition: background-color 200ms ease, color 200ms ease,
+    border-color 200ms ease, transform 150ms ease-out, box-shadow 200ms ease-out;
+}
+.cta-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(42, 107, 101, 0.25);
+}
+.cta-button:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+/* Section divider scroll-reveal */
+.divider-reveal {
+  position: relative;
+  border-top: none !important;
+}
+.divider-reveal::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-border);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.dark .divider-reveal::before {
+  background: var(--color-dark-border);
+}
+.divider-reveal.is-visible::before {
+  transform: scaleX(1);
+}
+
+/* Parallax image container */
+.parallax-container {
+  perspective: 1px;
+  overflow: hidden;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(205, 213, 207); border-radius: 3px; }
+.dark ::-webkit-scrollbar-thumb { background: rgb(40, 46, 44); }
