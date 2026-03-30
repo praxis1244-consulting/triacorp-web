@@ -47,27 +47,39 @@ export default function Services() {
           <span className="text-base uppercase tracking-widest text-charcoal/70 dark:text-warm-white/50 block mb-6">
             Servicios Inmobiliarios
           </span>
-          <h2 className="font-serif text-[clamp(2.4rem,7vw,3.7rem)] tracking-tight font-normal leading-[1.02] text-charcoal dark:text-warm-white">
+          <motion.h2
+            initial={{ clipPath: "inset(0 100% 0 0)" }}
+            whileInView={{ clipPath: "inset(0 0% 0 0)" }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
+            className="font-serif text-[clamp(2.4rem,7vw,3.7rem)] tracking-tight font-normal leading-[1.02] text-charcoal dark:text-warm-white"
+          >
             Tu visión,
             <br />
             nuestro know–how.
-          </h2>
+          </motion.h2>
         </div>
-        <p className="max-w-lg text-base leading-relaxed text-charcoal/70 dark:text-warm-white/60 sm:text-lg">
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.25, 1, 0.5, 1] }}
+          className="max-w-lg text-base leading-relaxed text-charcoal/70 dark:text-warm-white/60 sm:text-lg"
+        >
           El sector inmobiliario ya no se gestiona con intuición. Estructuramos
           y desarrollamos proyectos con metodología, análisis y ejecución
           rigurosa — para que tu inversión rinda lo que debe.
-        </p>
+        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mb-5 md:mb-6">
         {featured.map((service, i) => (
           <motion.div
             key={service.title}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, clipPath: "inset(0 100% 0 0)" }}
+            whileInView={{ opacity: 1, clipPath: "inset(0 0% 0 0)" }}
             viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.6, delay: i * 0.1 }}
+            transition={{ duration: 0.7, delay: i * 0.1, ease: [0.25, 1, 0.5, 1] }}
             className="bg-warm-gray dark:bg-dark-surface p-8 sm:p-10 md:p-12 flex flex-col justify-between min-h-[260px] border-l-2 border-brand"
           >
             <h3 className="font-serif text-[clamp(2rem,5vw,2.6rem)] tracking-tight font-normal leading-tight text-charcoal dark:text-warm-white">
@@ -81,9 +93,13 @@ export default function Services() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
-        {supporting.map((service) => (
-          <div
+        {supporting.map((service, i) => (
+          <motion.div
             key={service.title}
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: i * 0.08, ease: [0.25, 1, 0.5, 1] }}
             className="py-8 border-t border-border dark:border-dark-border"
           >
             <h3 className="font-serif text-xl tracking-tight font-normal mb-4 text-charcoal dark:text-warm-white">
@@ -92,7 +108,7 @@ export default function Services() {
             <p className="text-base leading-relaxed text-charcoal/65 dark:text-warm-white/55">
               {service.description}
             </p>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>
