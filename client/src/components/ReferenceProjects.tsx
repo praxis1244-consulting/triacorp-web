@@ -48,11 +48,23 @@ export default function ReferenceProjects() {
               className="group block border border-border dark:border-dark-border bg-warm-gray/50 dark:bg-dark-surface/50 transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-lg hover:shadow-charcoal/8 dark:hover:shadow-black/20"
             >
               <div className="overflow-hidden">
-                <img
-                  src={project!.heroImage}
-                  alt={`Proyecto ${project!.name}`}
-                  className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-72"
-                />
+                <motion.div
+                  initial={{ clipPath: "inset(0 0 100% 0)" }}
+                  whileInView={{ clipPath: "inset(0 0 0% 0)" }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.9, delay: i * 0.08, ease: [0.25, 1, 0.5, 1] }}
+                  className="h-full w-full"
+                >
+                  <motion.img
+                    src={project!.heroImage}
+                    alt={`Proyecto ${project!.name}`}
+                    initial={{ scale: 1.1 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1.2, ease: [0.25, 1, 0.5, 1] }}
+                    className="h-64 w-full object-cover transition-transform duration-500 group-hover:scale-[1.03] sm:h-72"
+                  />
+                </motion.div>
               </div>
               <div className="p-5 md:p-6">
                 <p className="text-xs uppercase tracking-widest text-charcoal/60 dark:text-warm-white/45 mb-2">
