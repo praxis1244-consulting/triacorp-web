@@ -75,13 +75,14 @@ export default function Header() {
         scrolled ? "py-3 md:py-4" : "py-5 md:py-7"
       }`}
     >
-      <Link
-        href="/"
-        className={`shrink-0 font-serif font-semibold tracking-tight text-charcoal transition-[font-size] duration-300 ease-out dark:text-warm-white ${
-          scrolled ? "text-[1.4rem] sm:text-2xl" : "text-[1.65rem] sm:text-3xl"
-        }`}
-      >
-        TRIA<span className="text-brand">CORP</span>
+      <Link href="/" className="shrink-0">
+        <img
+          src="/logos/triacorp-logo.png"
+          alt="TRIACORP"
+          className={`w-auto transition-[height] duration-300 ease-out dark:brightness-[1.6] dark:contrast-[0.85] ${
+            scrolled ? "h-7 sm:h-8" : "h-9 sm:h-10"
+          }`}
+        />
       </Link>
 
       {/* Desktop nav */}
