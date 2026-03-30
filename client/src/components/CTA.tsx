@@ -1,19 +1,56 @@
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import { Link } from "wouter";
 import SectionLink from "./SectionLink";
 
+const ease = [0.25, 1, 0.5, 1] as const;
+
 export default function CTA() {
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   return (
-    <section className="relative flex flex-col items-start border-t border-border py-16 md:py-24 dark:border-dark-border">
+    <section
+      ref={sectionRef}
+      className="relative flex flex-col items-start border-t border-border py-16 md:py-24 dark:border-dark-border"
+    >
       <h2 className="z-10 font-serif text-[clamp(3rem,12vw,7.5rem)] tracking-tight font-normal leading-[0.92] text-charcoal dark:text-warm-white">
-        Tu próximo proyecto
-        <br />
-        merece <span className="italic tracking-[0.02em] text-brand/85 dark:text-brand-light/85">gestión experta</span>
+        <span className="block overflow-hidden">
+          <motion.span
+            className="block"
+            initial={{ y: "100%" }}
+            animate={inView ? { y: 0 } : { y: "100%" }}
+            transition={{ duration: 0.7, ease }}
+          >
+            Tu próximo proyecto
+          </motion.span>
+        </span>
+        <span className="block overflow-hidden">
+          <motion.span
+            className="block"
+            initial={{ y: "100%" }}
+            animate={inView ? { y: 0 } : { y: "100%" }}
+            transition={{ duration: 0.7, delay: 0.12, ease }}
+          >
+            merece <span className="italic tracking-[0.02em] text-brand/85 dark:text-brand-light/85">gestión experta</span>
+          </motion.span>
+        </span>
       </h2>
-      <p className="z-10 mt-6 max-w-3xl text-base leading-relaxed text-charcoal/75 dark:text-warm-white/70 sm:mt-8 sm:text-lg">
+      <motion.p
+        initial={{ opacity: 0, y: 16 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+        transition={{ duration: 0.6, delay: 0.5, ease }}
+        className="z-10 mt-6 max-w-3xl text-base leading-relaxed text-charcoal/75 dark:text-warm-white/70 sm:mt-8 sm:text-lg"
+      >
         Más de una década gestionando proyectos inmobiliarios en cuatro países.
         Cuéntanos tu visión y te mostramos cómo hacerla realidad.
-      </p>
-      <div className="z-10 mt-8 flex flex-col items-start gap-4">
+      </motion.p>
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 16 }}
+        transition={{ duration: 0.6, delay: 0.7, ease }}
+        className="z-10 mt-8 flex flex-col items-start gap-4"
+      >
         <div className="flex flex-wrap items-center gap-4">
           <SectionLink
             href="/#contacto"
@@ -31,9 +68,14 @@ export default function CTA() {
         <span className="text-xs text-charcoal/40 dark:text-warm-white/30">
           Respuesta en 24 hrs · Sin compromiso
         </span>
-      </div>
+      </motion.div>
 
-      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden opacity-[0.08]">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={inView ? { opacity: 0.08 } : { opacity: 0 }}
+        transition={{ duration: 2, delay: 0.3, ease }}
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+      >
         <svg
           viewBox="0 0 200 200"
           className="absolute right-0 top-1/2 h-[400px] w-[400px] -translate-y-1/2 fill-none sm:h-[500px] sm:w-[500px] lg:h-[600px] lg:w-[600px]"
@@ -57,7 +99,7 @@ export default function CTA() {
             <circle cx="100" cy="100" r="5" strokeWidth="0.35" />
           </g>
         </svg>
-      </div>
+      </motion.div>
     </section>
   );
 }
