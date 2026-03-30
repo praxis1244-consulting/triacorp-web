@@ -3,6 +3,7 @@ import { Route, Switch } from "wouter";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import WhatsAppButton from "./components/WhatsAppButton";
+import ScrollProgress from "./components/ScrollProgress";
 import Home from "./pages/Home";
 
 const Projects = lazy(() => import("./pages/Projects"));
@@ -36,6 +37,7 @@ export default function App() {
       </div>
       <Footer />
       <WhatsAppButton />
+      <ScrollProgress />
     </div>
   );
 }

@@ -5,11 +5,14 @@ import SectionLink from "./SectionLink";
 
 function BlueprintBg() {
   return (
-    <svg
+    <motion.svg
       viewBox="0 0 200 200"
-      className="absolute inset-0 w-full h-full fill-none opacity-[0.18]"
+      className="absolute inset-0 w-full h-full fill-none"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 0.18 }}
+      transition={{ duration: 1.5, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
     >
       <g stroke="currentColor" className="text-brand" strokeWidth="0.25">
         <line x1="0" y1="40" x2="200" y2="40" />
@@ -36,7 +39,7 @@ function BlueprintBg() {
         <line x1="20" y1="20" x2="20" y2="180" />
         <line x1="180" y1="20" x2="180" y2="180" />
       </g>
-    </svg>
+    </motion.svg>
   );
 }
 
@@ -121,19 +124,44 @@ export default function Hero() {
       </div>
 
       <div className="mt-10 grid grid-cols-1 gap-3 border-y border-border py-4 text-sm uppercase tracking-[0.24em] text-charcoal/70 dark:border-dark-border dark:text-warm-white/60 sm:grid-cols-3 sm:gap-4">
-        <span>+10 Años de Trayectoria</span>
-        <span className="sm:text-center">4 Países</span>
-        <span className="sm:text-right">Gestión Integral</span>
+        {["+10 Años de Trayectoria", "4 Países", "Gestión Integral"].map(
+          (label, i) => (
+            <motion.span
+              key={label}
+              className={i === 1 ? "sm:text-center" : i === 2 ? "sm:text-right" : undefined}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.5,
+                delay: 1.0 + i * 0.4,
+                ease: [0.25, 1, 0.5, 1],
+              }}
+            >
+              {label}
+            </motion.span>
+          )
+        )}
       </div>
 
-      <ScrollImage
-        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=2200&h=1400&fit=crop&q=80"
-        fallbackSrc="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=2200&h=1400&fit=crop&q=80"
-        alt="Arquitectura contemporánea — desarrollo inmobiliario TRIACORP"
-        className="relative mt-4 h-[320px] w-full sm:h-[420px] md:h-[560px] lg:h-[680px]"
-      />
+      <motion.div
+        initial={{ clipPath: "inset(0 50% 0 50%)" }}
+        animate={{ clipPath: "inset(0 0% 0 0%)" }}
+        transition={{ duration: 1.2, delay: 0.8, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <ScrollImage
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=2200&h=1400&fit=crop&q=80"
+          fallbackSrc="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=2200&h=1400&fit=crop&q=80"
+          alt="Arquitectura contemporánea — desarrollo inmobiliario TRIACORP"
+          className="relative mt-4 h-[320px] w-full sm:h-[420px] md:h-[560px] lg:h-[680px]"
+        />
+      </motion.div>
 
-      <div className="flex flex-col gap-1 py-3 text-sm uppercase tracking-[0.16em] text-charcoal/70 dark:text-warm-white/60 sm:flex-row sm:items-center sm:justify-between sm:text-base sm:tracking-normal">
+      <motion.div
+        className="flex flex-col gap-1 py-3 text-sm uppercase tracking-[0.16em] text-charcoal/70 dark:text-warm-white/60 sm:flex-row sm:items-center sm:justify-between sm:text-base sm:tracking-normal"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 1.2, ease: [0.25, 1, 0.5, 1] }}
+      >
         <span>Planificación & Gestión Inmobiliaria</span>
         <Link
           href="/proyectos"
@@ -141,7 +169,7 @@ export default function Hero() {
         >
           Ver Proyectos →
         </Link>
-      </div>
+      </motion.div>
     </section>
   );
 }
