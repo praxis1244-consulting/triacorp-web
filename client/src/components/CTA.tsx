@@ -15,7 +15,7 @@ export default function CTA() {
       className="relative flex flex-col items-start border-t border-border py-16 md:py-24 dark:border-dark-border"
     >
       <h2 className="z-10 font-serif text-[clamp(3rem,12vw,7.5rem)] tracking-tight font-normal leading-[0.92] text-charcoal dark:text-warm-white">
-        <span className="block overflow-hidden">
+        <span className="block overflow-hidden pb-[0.15em]">
           <motion.span
             className="block"
             initial={{ y: "100%" }}
@@ -25,7 +25,7 @@ export default function CTA() {
             Tu próximo proyecto
           </motion.span>
         </span>
-        <span className="block overflow-hidden">
+        <span className="block overflow-hidden pb-[0.15em]">
           <motion.span
             className="block"
             initial={{ y: "100%" }}

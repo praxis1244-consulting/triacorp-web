@@ -52,7 +52,7 @@ export default function Leadership() {
           Liderazgo
         </motion.span>
         <h2 className="font-serif text-[clamp(2.4rem,7vw,3.7rem)] tracking-tight font-normal leading-[1.02] text-charcoal dark:text-warm-white">
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.15em]">
             <motion.span
               className="block"
               variants={headingLine}
@@ -63,7 +63,7 @@ export default function Leadership() {
               Quienes dirigen
             </motion.span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.15em]">
             <motion.span
               className="block"
               variants={headingLine}

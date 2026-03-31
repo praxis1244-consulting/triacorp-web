@@ -145,7 +145,7 @@ export default function QuienesSomos() {
           Quiénes Somos
         </span>
         <h1 className="font-serif text-[clamp(3.2rem,12vw,8rem)] leading-[0.90] tracking-tight font-normal text-charcoal dark:text-warm-white">
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.15em]">
             <motion.span
               className="block"
               variants={lineVariants}
@@ -156,7 +156,7 @@ export default function QuienesSomos() {
               Un equipo que
             </motion.span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.15em]">
             <motion.span
               className="block"
               variants={lineVariants}
@@ -170,7 +170,7 @@ export default function QuienesSomos() {
               </span>
             </motion.span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.15em]">
             <motion.span
               className="block"
               variants={lineVariants}

@@ -60,7 +60,7 @@ export default function Hero() {
     <section className="relative pt-10 pb-12 sm:pt-14 md:pt-20 md:pb-16">
       <div className="relative z-10 flex flex-col gap-10 md:flex-row md:items-end md:justify-between md:gap-8 lg:gap-12">
         <h1 className="w-full max-w-5xl font-serif text-[clamp(3.35rem,13vw,8rem)] leading-[0.94] tracking-tight font-normal text-charcoal dark:text-warm-white md:w-3/4">
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.25em]">
             <motion.span
               className="block"
               variants={lineVariants}
@@ -71,7 +71,7 @@ export default function Hero() {
               Visión clara.
             </motion.span>
           </span>
-          <span className="block overflow-hidden">
+          <span className="block overflow-hidden pb-[0.25em]">
             <motion.span
               className="block"
               variants={lineVariants}
